@@ -37,7 +37,7 @@ namespace bdddoc.tasks
         private string build_behaviour_block_using(IConcernGroup concern_group)
         {
             var builder = new StringBuilder();
-            builder.AppendFormat("{3}### {0} [ {1} Scenario(s) , {2} Observation(s) ]{3}", concern_group.concerned_with.Name, concern_group.total_number_of_concerns,
+            builder.AppendFormat("{3}### {0} [ {1} Scenario(s), {2} Observation(s) ]{3}", concern_group.concerned_with.Name, concern_group.total_number_of_concerns,
                                  concern_group.total_number_of_observations, Environment.NewLine);
             concern_group.concerns.OrderBy(x => x.name.name).each(cg => builder.Append(build_concern_block_using(cg)));
             return builder.ToString();
