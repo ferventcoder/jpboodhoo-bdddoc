@@ -15,14 +15,14 @@ namespace bdddoc.domain
 
         public static bool is_a_concern(this Type type)
         {
-            var concern_attributes = type.GetCustomAttributes(typeof (ConcernAttribute), false);
+            var concern_attributes = type.GetCustomAttributes(typeof(ConcernAttribute), false);
             return concern_attributes != null && concern_attributes.Length == 1;
         }
 
         public static Type concern(this Type type)
         {
-            var concern_attributes = type.GetCustomAttributes(typeof (ConcernAttribute), false);
-            return ((ConcernAttribute) concern_attributes[0]).concerned_with;
+            var concern_attributes = type.GetCustomAttributes(typeof(ConcernAttribute), false);
+            return ((ConcernAttribute)concern_attributes[0]).concerned_with;
         }
 
         public static IConcernObservation as_observation(this MethodInfo method)
