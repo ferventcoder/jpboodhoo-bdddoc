@@ -81,6 +81,7 @@
     <Compile Include="console\BootStrap.cs" />
     <Compile Include="domain\BddReportType.cs" />
     <Compile Include="domain\IAssemblyRepository.cs" />
+    <Compile Include="domain\IConcernObservation.cs" />
     <Compile Include="domain\IConcernReportFactory.cs" />
     <Compile Include="domain\IReportOptions.cs" />
     <Compile Include="domain\IReportOptionsFactory.cs" />
