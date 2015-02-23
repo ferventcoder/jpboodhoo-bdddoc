@@ -82,6 +82,9 @@
     <Compile Include="domain\BddReportType.cs" />
     <Compile Include="domain\IAssemblyRepository.cs" />
     <Compile Include="domain\IConcernReportFactory.cs" />
+    <Compile Include="domain\IReportOptions.cs" />
+    <Compile Include="domain\IReportOptionsFactory.cs" />
+    <Compile Include="domain\MissingReportOptions.cs" />
     <Compile Include="tasks\IReportTasks.cs" />
     <Compile Include="tasks\IReportWriter.cs" />
     <Compile Include="tasks\SimpleHtmlReportWriter.cs" />
