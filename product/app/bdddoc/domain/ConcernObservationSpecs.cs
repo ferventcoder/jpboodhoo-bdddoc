@@ -29,7 +29,7 @@ namespace bdddoc.domain
 
         protected override ConcernObservation create_sut()
         {
-            return new ConcernObservation(new BDDStyleName("what_is_in_a_name))"));
+            return new ConcernObservation(new BDDStyleName("what_is_in_a_name))"), false);
         }
     }
 }
