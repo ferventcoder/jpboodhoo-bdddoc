@@ -12,15 +12,34 @@
 
 	<target name="runCompilePrep">
 		<property name="ignoreSpecs" value="true"/>
+    <property name="debug" value="None" />
 	</target> 
 
-	<target name="compile.exe" depends="runCompilePrep,compile">
-		<csc target="exe" output="${build.artifacts.dir}\${bdddoc.exe}" main="bdddoc.console.BootStrap" debug="${debug}">
-			<sources>
+	<target name="compile.exe" depends="runCompilePrep, compile">
+    <!-- /nostdlib+ /errorreport:prompt /errorendlocation /preferreduilang:en-US /highentropyva- -->
+		<csc target="exe" 
+         output="${build.artifacts.dir}\${bdddoc.exe}" 
+         main="bdddoc.console.BootStrap" 
+         debug="${debug}"
+         noconfig="true"
+         define="TRACE"
+         warninglevel="4"
+         >
+      <nowarn>
+        <warning number="1701" />
+        <warning number="1702" />
+      </nowarn>
+      <sources>
 				<include name="${product.dir}\**\BootStrap.cs"/>
 			</sources>
 			<references>
 				<include name="${build.artifacts.dir}\${bdddoc.lib}"/>
+        <include name="System.dll" />
+        <include name="System.Core.dll" />
+        <include name="System.Data.dll" />
+        <include name="System.Data.DataSetExtensions.dll" />
+        <include name="System.Xml.dll" />
+        <include name="System.Xml.Linq.dll" />
 			</references>
 		</csc>
 	</target>

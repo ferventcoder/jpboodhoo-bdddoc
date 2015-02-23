@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <project name="bdddoc" default="app">
-	<property name="debug" value="true" />
+	<property name="debug" value="Full" />
 	<property name="projectName" value="${project::get-name()}"/>
 	<property name="ignoreSpecs" value="false"/>
 	
@@ -73,7 +73,16 @@
 	</target>
 	
 	<target name="compile" depends="init">
-		<csc target="library" output="${build.artifacts.dir}\${bdddoc.lib}" debug="${debug}">
+		<csc target="library" 
+         output="${build.artifacts.dir}\${bdddoc.lib}"
+         debug="${debug}" 
+         define="TRACE"
+         warninglevel="4"
+         >
+      <nowarn>
+        <warning number="1701" />
+        <warning number="1702" />
+      </nowarn>
 			<sources>
 				<include name="${product.dir}\**\*.cs"/>
 				<exclude name="${product.dir}\**\AssemblyInfo.cs"/>
