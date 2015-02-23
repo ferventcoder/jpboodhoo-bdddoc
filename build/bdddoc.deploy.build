@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="bdddocdeploy">
+	<property name="deploy.dir" value="${build.dir}\deploy"/>
+	<property name="dist.dir" value="${deploy.dir}\dist"/>	
+
+
+  <target name="deploy.compile" depends="init">
+    <property name="compile.dir" value="${deploy.dir}" />
+    <call target="compile"/>
+  </target>
+
+	<target name="runCompilePrep">
+		<property name="ignoreSpecs" value="true"/>
+	</target> 
+
+	<target name="compile.exe" depends="runCompilePrep,compile">
+		<csc target="exe" output="${build.artifacts.dir}\${bdddoc.exe}" main="bdddoc.console.BootStrap" debug="${debug}">
+			<sources>
+				<include name="${product.dir}\**\BootStrap.cs"/>
+			</sources>
+			<references>
+				<include name="${build.artifacts.dir}\${bdddoc.lib}"/>
+			</references>
+		</csc>
+	</target>
+
+	<target name="package" depends="compile.exe">
+		<property name="targetDirectory" value="${latestPackageDirectory}"/>
+		<copy todir="${targetDirectory}" flatten="true">
+			<fileset basedir="${build.artifacts.dir}">
+				<include name="${bdddoc.lib}"/>
+				<include name="${bdddoc.exe}"/>
+			</fileset>
+		</copy>
+	</target>
+</project>

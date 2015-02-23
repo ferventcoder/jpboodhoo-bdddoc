@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{77912D98-3AF0-4060-A144-72266075DF8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>bdddoc</RootNamespace>
+    <AssemblyName>bdddoc</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MbUnit.Framework, Version=2.4.2.130, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\thirdparty\tools\mbunit\bin\MbUnit.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=0b3305902db7183f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\thirdparty\tools\rhino.mocks\bin\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="console\BootStrap.cs" />
+    <Compile Include="tasks\SimpleHtmlReportWriter.cs" />
+    <Compile Include="domain\AssemblyRepository.cs" />
+    <Compile Include="domain\BDDNamingStyleExtensions.cs" />
+    <Compile Include="domain\BDDNamingStyleExtensionsSpecs.cs" />
+    <Compile Include="domain\ConcernFactory.cs" />
+    <Compile Include="domain\ConcernFactorySpecs.cs" />
+    <Compile Include="domain\ConcernGroupRepository.cs" />
+    <Compile Include="domain\ConcernGroupRepositorySpecs.cs" />
+    <Compile Include="domain\ConcernReport.cs" />
+    <Compile Include="domain\ConcernReportFactory.cs" />
+    <Compile Include="domain\ConcernReportFactorySpecs.cs" />
+    <Compile Include="domain\ConcernReportSpecs.cs" />
+    <Compile Include="tasks\ReportTasks.cs" />
+    <Compile Include="utility\EnumerableExtensions.cs" />
+    <Compile Include="utility\EnumerableExtensionsSpecs.cs" />
+    <Compile Include="domain\BDDReflectionExtensions.cs" />
+    <Compile Include="domain\BDDReflectionExtensionsSpecs.cs" />
+    <Compile Include="domain\BDDStyleName.cs" />
+    <Compile Include="domain\BDDStyleNameSpecs.cs" />
+    <Compile Include="domain\ConcernGroup.cs" />
+    <Compile Include="domain\ConcernGroupSpecs.cs" />
+    <Compile Include="domain\ConcernObservation.cs" />
+    <Compile Include="domain\ConcernObservationSpecs.cs" />
+    <Compile Include="domain\ConcernSpecs.cs" />
+    <Compile Include="domain\IGroupingOfConcerns.cs" />
+    <Compile Include="domain\ReportOptions.cs" />
+    <Compile Include="domain\ITypeForAConcern.cs" />
+    <Compile Include="domain\ObservationSpecification.cs" />
+    <Compile Include="domain\ObservationSpecificationSpecs.cs" />
+    <Compile Include="domain\ReportOptionsFactory.cs" />
+    <Compile Include="domain\ReportOptionsFactorySpecs.cs" />
+    <Compile Include="tasks\ReportTasksSpecs.cs" />
+    <Compile Include="spechelpers\BDDAssertions.cs" />
+    <Compile Include="domain\Concern.cs" />
+    <Compile Include="core\ConcernAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="spechelpers\BDDExtensions.cs" />
+    <Compile Include="spechelpers\ContextSpecification.cs" />
+    <Compile Include="spechelpers\when_a_number_is_told_to_add_itself_to_another_numberSpecs.cs" />
+    <Compile Include="spechelpers\Method.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

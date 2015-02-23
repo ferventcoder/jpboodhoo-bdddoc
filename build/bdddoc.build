@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<project name="bdddoc" default="all">
+	<property name="debug" value="true" />
+	<property name="projectName" value="${project::get-name()}"/>
+	<property name="ignoreSpecs" value="false"/>
+	
+	<!-- directories -->
+	<property name="base.dir" value="${directory::get-parent-directory(project::get-base-directory())}" />
+	<property name="third.party.dir" value="${base.dir}\thirdparty"/>
+	<property name="third.party.lib.dir" value="${third.party.dir}\lib"/>
+	<property name="third.party.tools.dir" value="${third.party.dir}\tools"/>
+	<property name="build.dir" value="${base.dir}\build"/>
+	<property name="latestPackageDirectory" value="${build.dir}\latestpackage"/>
+	<property name="build.tools.dir" value="${build.dir}\tools" />
+	<property name="product.tools.dir" value="${third.party.dir}\tools" />
+	<property name="product.lib.dir" value="${third.party.dir}\lib" />
+	<property name="docs.dir" value="${base.dir}\docs" />
+	<property name="config.dir" value="${build.dir}\config" />	
+	<property name="product.dir" value="${base.dir}\product"/>	
+	<property name="product.app.dir" value="${product.dir}\app" />
+	<property name="images.dir" value="${product.app.dir}\images"/>
+	<property name="product.test.dir" value="${product.app.dir}" />		
+	<property name="build.artifacts.dir" value="${build.dir}\buildartifacts" />
+	<property name="coverage.dir" value="${build.artifacts.dir}\coverage"/>
+	<property name="compile.dir" value="${build.artifacts.dir}" />
+	<!-- end directories -->
+	
+	<!-- file names -->	
+	<property name="now" value="${datetime::now()}"/>
+	<property name="bdddoc.lib" value="${project::get-name()}.dll"/>
+	<property name="bdddoc.exe" value="${project::get-name()}.console.exe"/>
+	<!-- end file names -->
+	
+	
+	<fileset id="product.app.sources" >
+		<include name="${product.app.dir}\**\*.cs"/>
+		<exclude name="${product.app.dir}\**\AssemblyInfo.cs" />
+	</fileset>
+
+	<fileset id="thirdPartyReferences">
+		<include name="${third.party.tools.dir}\**\*.dll"/>
+	</fileset>
+
+    <!-- include the machine specific properties file to override machine specific defaults -->
+    <if test="${file::exists('local.properties.xml')}">
+		<echo message="Loading local.properties.xml" />
+        <include buildfile="local.properties.xml" />
+    </if>
+  
+	<target name="kill.exe">
+		<exec program="taskkill.exe" commandline="/f /im ${exe.to.kill} /fi &quot;STATUS eq RUNNING&quot;" failonerror="false" />
+	</target>	
+
+	<include buildfile="bdddoc.deploy.build"/>
+	<include buildfile="bdddoc.test.build"/>
+	
+	<target name="all" depends="test"/>
+	
+	
+	<target name="clean">
+		<delete dir="${build.artifacts.dir}" />
+		<delete dir="${deploy.dir}" />
+		<delete dir="${coverage.dir}" />
+	</target>	
+	
+	<target name="init" depends="clean">
+		<property name="exe.to.kill" value="notepad.exe" />
+		<call target="kill.exe" />
+		<mkdir dir="${build.artifacts.dir}" />
+		<mkdir dir="${deploy.dir}" />
+		<mkdir dir="${coverage.dir}"/>
+	</target>
+	
+	<target name="compile" depends="init">
+		<csc target="library" output="${build.artifacts.dir}\${bdddoc.lib}" debug="${debug}">
+			<sources>
+				<include name="${product.dir}\**\*.cs"/>
+				<exclude name="${product.dir}\**\AssemblyInfo.cs"/>
+				<exclude name="${product.dir}\**\*Specs.cs" if="${ignoreSpecs}"/> 
+				<exclude name="${product.dir}\**\SpecHelpers\**\*.cs" if="${ignoreSpecs}"/>
+				<exclude name="${product.dir}\**\BootStrap.cs"/>
+			</sources>
+			<references refid="thirdPartyReferences"/>
+		</csc>
+	</target>
+
+	<target name="copyThirdPartyReferencesToTargetLocation">
+		<copy todir="${targetDirectory}" flatten="true">
+			<fileset basedir="${product.lib.dir}">
+				<include name="**\*.dll" />
+			</fileset>
+		</copy>				
+	</target>
+</project>

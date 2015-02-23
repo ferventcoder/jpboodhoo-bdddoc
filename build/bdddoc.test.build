@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="bdddoctest">
+	<!-- file names-->
+	<property name="test.lib.prefix" value="${projectName}.Test"/>
+	<property name="test.lib" value="${test.lib.prefix}.dll"/>
+	<property name="test.output.file" value="${test.lib.prefix}.Results.xml" />
+	<property name="test.common.lib" value="${test.lib.prefix}.Utility.dll"/>
+	<!-- end file names-->
+
+	<!-- coverage properties -->
+	<property name="path.xunit.console" value="${product.tools.dir}\mbunit\bin\MBUnit.Cons.exe"/>
+	<property name="coverage.xml.file" value="${coverage.dir}\Coverage.xml"/>
+	<property name="fail.onerror" value="true"/>
+	<property name="xunit.console.args" value="/rt:Text /sr /rf:${coverage.dir}"/>
+	<!-- end coverage properties -->
+
+
+	<property name="xunit.report.file.dir" value="${build.artifacts.dir}" />
+	<property name="xunit.report.file.name" value="test.report" />	
+	<property name="xunit.console.args" value="/rt:Text /rnf:${xunit.report.file.name} /rf:${xunit.report.file.dir}"/>	
+
+	
+	<target name="copyTestLibrariesToTargetLocation">
+		<copy todir="${targetDirectory}" flatten="true">
+			<fileset basedir="${product.tools.dir}">
+				<include name="mbunit\**\*.dll" />
+				<include name="rhino.mocks\**\*.dll" />
+				<include name="nunit.forms\**\*.dll" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="setup.test" depends="compile">
+		<property name="targetDirectory" value="${build.artifacts.dir}"/>
+		<call target="copyTestLibrariesToTargetLocation"/>
+		<call target="copyThirdPartyReferencesToTargetLocation"/>
+	</target>
+
+
+	<target name="_run.tests" depends="setup.test">
+		<loadtasks assembly="${build.tools.dir}\nant\bin\NAnt.Contrib.Tasks.dll"/>
+		<echo message="Starting MBUnit code coverage run..."/>
+		<property name="test.failed" value="false"/>
+		<property name="fail.message" value=""/>
+
+		<property name="report.file.path" value="${xunit.report.file.dir}\${xunit.report.file.name}" />		
+		<trycatch>
+			<try>		
+				<exec program="${path.xunit.console}"
+					  workingdir="${build.artifacts.dir}"
+					  commandline="${build.artifacts.dir}\${bdddoc.lib} ${xunit.console.args}" />						 
+			</try>
+			<catch property="failure">
+				<echo message="One or more tests failed: ${failure}"/>
+				<exec program="notepad.exe" commandline="${report.file.path}.txt" spawn="true" />
+			</catch>
+		</trycatch>				  
+	</target>
+
+
+	<target name="test">		
+		<call target="_run.tests"/>
+	</target>
+
+
+</project>
