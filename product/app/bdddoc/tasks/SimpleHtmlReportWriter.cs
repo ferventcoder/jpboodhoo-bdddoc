@@ -8,16 +8,16 @@ namespace bdddoc.tasks
 
     public class SimpleHtmlReportWriter : IReportWriter
     {
-        public void save(IConcernReport report, string file_name)
+        public void save(IConcernReport report, IReportOptions options)
         {
-            File.WriteAllText(file_name, build_report_output_using(report));
+            File.WriteAllText(options.output_filename, build_report_output_using(report, options));
         }
 
-        private string build_report_output_using(IConcernReport report)
+        private string build_report_output_using(IConcernReport report, IReportOptions options)
         {
             var builder = new StringBuilder();
 
-            builder.Append(build_report_header_block_using(report));
+            builder.Append(build_report_header_block_using(report, options));
             builder.AppendFormat("<ul>");
             report.groups.OrderBy(x => x.concerned_with.Name).each(rg => builder.Append(build_behaviour_block_using(rg)));
             builder.AppendFormat("</ul>");
@@ -25,8 +25,13 @@ namespace bdddoc.tasks
             return builder.ToString();
         }
 
-        private string build_report_header_block_using(IConcernReport report)
+        private string build_report_header_block_using(IConcernReport report, IReportOptions options)
         {
+            if (!string.IsNullOrWhiteSpace(options.custom_header))
+            {
+                return string.Format("<h1>{0}</h1>", options.custom_header);
+            }
+
             return string.Format("<h1>Concerns: {0} - Observations: {1}</h1>", report.total_number_of_concerns, report.total_number_of_observations);
         }
 

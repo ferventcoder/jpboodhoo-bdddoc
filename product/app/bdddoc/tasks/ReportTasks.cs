@@ -43,7 +43,7 @@ namespace bdddoc.tasks
 
         private void write_report_using(IReportOptions report_options)
         {
-            report_writer.save(concern_report_factory.create_using(report_options), report_options.output_filename);
+            report_writer.save(concern_report_factory.create_using(report_options), report_options);
         }
     }
 }

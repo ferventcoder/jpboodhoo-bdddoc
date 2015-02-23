@@ -86,7 +86,7 @@ namespace bdddoc.tasks
         [Observation]
         public void should_tell_the_report_writer_to_save_the_report()
         {
-            report_writer.was_told_to(x => x.save(report, report_options.output_filename));
+            report_writer.was_told_to(x => x.save(report, report_options));
         }
     }
 
