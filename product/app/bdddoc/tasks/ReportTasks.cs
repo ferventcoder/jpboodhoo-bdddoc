@@ -10,8 +10,8 @@ namespace bdddoc.tasks
         private readonly IReportOptionsFactory report_options_factory;
         private readonly TextWriter writer;
         private readonly IConcernReportFactory concern_report_factory;
-        private readonly IReportWriter report_writer;
-        public static readonly string help_message = string.Format("usage: {0} [assembly_filename] [test_attribute_name] [report_output_filename]", Assembly.GetExecutingAssembly().GetName().Name);
+        private IReportWriter report_writer;
+        public static readonly string help_message = string.Format("usage: {0} [assembly_filename] [test_attribute_name] [report_output_filename] [markdown] [custom_header=\"value\"]", Assembly.GetExecutingAssembly().GetName().Name);
 
         public ReportTasks() : this(Console.Out, new ReportOptionsFactory(), new ConcernReportFactory(), new SimpleHtmlReportWriter())
         {
@@ -30,6 +30,11 @@ namespace bdddoc.tasks
             var options = report_options_factory.create_from(args);
             if (options.is_valid)
             {
+                if (options.report_type == BddReportType.Markdown)
+                {
+                    report_writer = new SimpleMarkDownReportWriter();
+                }
+
                 write_report_using(options);
                 return;
             }

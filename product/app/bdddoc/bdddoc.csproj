@@ -100,6 +100,7 @@
     <Compile Include="domain\ConcernReportFactorySpecs.cs" />
     <Compile Include="domain\ConcernReportSpecs.cs" />
     <Compile Include="tasks\ReportTasks.cs" />
+    <Compile Include="tasks\SimpleMarkDownReportWriter.cs" />
     <Compile Include="utility\EnumerableExtensions.cs" />
     <Compile Include="utility\EnumerableExtensionsSpecs.cs" />
     <Compile Include="domain\BDDReflectionExtensions.cs" />
