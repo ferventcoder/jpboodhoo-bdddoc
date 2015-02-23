@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<project name="bdddoc" default="all">
+<project name="bdddoc" default="app">
 	<property name="debug" value="true" />
 	<property name="projectName" value="${project::get-name()}"/>
 	<property name="ignoreSpecs" value="false"/>
@@ -56,13 +56,13 @@
 	<include buildfile="bdddoc.test.build"/>
 	
 	<target name="all" depends="test"/>
-	
+	<target name="app" depends="package" />
 	
 	<target name="clean">
 		<delete dir="${build.artifacts.dir}" />
 		<delete dir="${deploy.dir}" />
 		<delete dir="${coverage.dir}" />
-	</target>	
+	</target>
 	
 	<target name="init" depends="clean">
 		<property name="exe.to.kill" value="notepad.exe" />
