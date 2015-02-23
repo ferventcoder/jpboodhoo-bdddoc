@@ -1,8 +1,9 @@
-using bdddoc.core;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.spechelpers
 {
+    using core;
+
     [Concern(typeof (int))]
     public class when_a_number_is_told_to_add_itself_to_another_number
     {

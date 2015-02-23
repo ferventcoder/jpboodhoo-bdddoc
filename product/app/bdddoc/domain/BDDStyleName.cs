@@ -1,7 +1,7 @@
-using System;
-
 namespace bdddoc.domain
 {
+    using System;
+
     public class BDDStyleName : IEquatable<BDDStyleName>
     {
         public string name { get; private set; }

@@ -1,10 +1,5 @@
 namespace bdddoc.domain
 {
-    public interface IConcernReportFactory
-    {
-        IConcernReport create_using(IReportOptions options);
-    }
-
     public class ConcernReportFactory : IConcernReportFactory
     {
         private readonly IConcernGroupRepository concern_group_repository;

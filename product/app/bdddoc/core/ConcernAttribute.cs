@@ -1,7 +1,7 @@
-using System;
-
 namespace bdddoc.core
 {
+    using System;
+
     [AttributeUsage(AttributeTargets.Class)]
     public class ConcernAttribute : Attribute
     {
@@ -9,7 +9,7 @@ namespace bdddoc.core
 
         public ConcernAttribute(Type concern)
         {
-            this.concerned_with = concern;
+            concerned_with = concern;
         }
     }
 }

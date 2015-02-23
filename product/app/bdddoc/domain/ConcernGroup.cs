@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using bdddoc.utility;
-
 namespace bdddoc.domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using utility;
+
     public interface IConcernGroup : ITypeForAConcern, IGroupingOfConcerns
     {
         IEnumerable<IConcern> concerns { get; }
@@ -12,7 +12,7 @@ namespace bdddoc.domain
 
     public class ConcernGroup : IConcernGroup
     {
-        private IEnumerable<IConcern> all_concerns;
+        private readonly IEnumerable<IConcern> all_concerns;
 
         public ConcernGroup(IEnumerable<IConcern> concerns)
         {

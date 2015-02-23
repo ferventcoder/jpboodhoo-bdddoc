@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using System;
+    using System.Collections.Generic;
+    using core;
+    using spechelpers;
 
     public abstract class context_for_concern_group : ContextSpecification<IConcernGroup>
     {
@@ -27,10 +27,9 @@ namespace bdddoc.domain
     [Concern(typeof (ConcernGroup))]
     public class when_a_concern_group_is_created_with_a_list_of_concerns : context_for_concern_group
     {
-
         protected override void establish_context()
         {
-            concerns_in_group = new List<IConcern>{concern_in_group};
+            concerns_in_group = new List<IConcern> {concern_in_group};
         }
 
         protected override void because()
@@ -55,7 +54,7 @@ namespace bdddoc.domain
         {
             base.establish_context();
             concern_in_group.setup_result(x => x.concerned_with).Return(typeof (int));
-            concerns_in_group = new List<IConcern>{concern_in_group};
+            concerns_in_group = new List<IConcern> {concern_in_group};
             sut = create_sut();
         }
 
@@ -79,11 +78,12 @@ namespace bdddoc.domain
 
         protected override void establish_context()
         {
-            concerns_in_group = new List<IConcern>{
-                                           dependency<IConcern>(),
-                                           dependency<IConcern>(),
-                                           dependency<IConcern>()
-                                       };
+            concerns_in_group = new List<IConcern>
+                {
+                    dependency<IConcern>(),
+                    dependency<IConcern>(),
+                    dependency<IConcern>()
+                };
             sut = create_sut();
         }
 

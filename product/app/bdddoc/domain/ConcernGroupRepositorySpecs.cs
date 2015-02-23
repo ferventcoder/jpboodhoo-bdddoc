@@ -1,12 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using core;
+    using spechelpers;
+
     public abstract class context_for_concern_group_repository : ContextSpecification<IConcernGroupRepository>
     {
         protected IEnumerable<IConcernGroup> all_groups;

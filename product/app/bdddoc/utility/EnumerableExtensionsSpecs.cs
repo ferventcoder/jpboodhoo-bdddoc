@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.utility
 {
+    using System.Collections.Generic;
+    using core;
+    using spechelpers;
+
     [Concern(typeof (EnumerableExtensions))]
     public class when_an_enumerable_is_walked_one_item_at_a_time : StaticContextSpecification
     {

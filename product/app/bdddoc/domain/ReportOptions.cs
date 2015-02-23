@@ -1,5 +1,4 @@
 using System;
-using System.Reflection;
 
 namespace bdddoc.domain
 {
@@ -36,6 +35,7 @@ namespace bdddoc.domain
             set { throw new NotImplementedException(); }
         }
     }
+    using System.Reflection;
 
     public class ReportOptions : IReportOptions
     {

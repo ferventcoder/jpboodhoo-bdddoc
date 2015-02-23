@@ -1,9 +1,10 @@
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using core;
+    using spechelpers;
+
     public abstract class context_for_bdd_style_name : ContextSpecification<BDDStyleName>
     {
         protected string name_for_bdd_name = "name_formatted_with_jp_s_bdd_conventions";

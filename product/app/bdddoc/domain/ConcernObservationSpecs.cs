@@ -1,9 +1,10 @@
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using core;
+    using spechelpers;
+
     [Concern(typeof (ConcernObservation))]
     public class when_a_concern_observation_is_asked_for_its_name : ContextSpecification<ConcernObservation>
     {

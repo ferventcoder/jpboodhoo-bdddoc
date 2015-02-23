@@ -1,15 +1,10 @@
-using System.IO;
-using System.Linq;
-using System.Text;
-using bdddoc.domain;
-using bdddoc.utility;
-
 namespace bdddoc.tasks
 {
-    public interface IReportWriter
-    {
-        void save(IConcernReport report, string file_name);
-    }
+    using System.IO;
+    using System.Linq;
+    using System.Text;
+    using domain;
+    using utility;
 
     public class SimpleHtmlReportWriter : IReportWriter
     {

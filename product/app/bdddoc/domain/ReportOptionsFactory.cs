@@ -1,11 +1,6 @@
-using System;
-
 namespace bdddoc.domain
 {
-    public interface IReportOptionsFactory
-    {
-        IReportOptions create_from(string[] args);
-    }
+    using System;
 
     public class ReportOptionsFactory : IReportOptionsFactory
     {

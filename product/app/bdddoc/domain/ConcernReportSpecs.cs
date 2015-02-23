@@ -1,11 +1,12 @@
-using System.Collections.Generic;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
-    public abstract class context_for_concern_report : ContextSpecification<IConcernReport>  
+    using System.Collections.Generic;
+    using core;
+    using spechelpers;
+
+    public abstract class context_for_concern_report : ContextSpecification<IConcernReport>
     {
         protected List<IConcernGroup> concern_groups_in_report;
 

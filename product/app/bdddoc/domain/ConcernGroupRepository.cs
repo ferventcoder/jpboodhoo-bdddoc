@@ -1,8 +1,8 @@
-using System.Collections.Generic;
-using System.Linq;
-
 namespace bdddoc.domain
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
     public interface IConcernGroupRepository
     {
         IEnumerable<IConcernGroup> all_concern_groups_found_using(IReportOptions options);
@@ -24,11 +24,11 @@ namespace bdddoc.domain
         public IEnumerable<IConcernGroup> all_concern_groups_found_using(IReportOptions options)
         {
             return options.assembly_to_scan
-                .all_types_with_a_concern_attribute()
-                .Select(x => concern_factory.create_concern_from(x, options.observation_specification))
-                .GroupBy(x => x.concerned_with)
-                .Select(x => new ConcernGroup(x))
-                .Cast<IConcernGroup>();
+                          .all_types_with_a_concern_attribute()
+                          .Select(x => concern_factory.create_concern_from(x, options.observation_specification))
+                          .GroupBy(x => x.concerned_with)
+                          .Select(x => new ConcernGroup(x))
+                          .Cast<IConcernGroup>();
         }
     }
 }

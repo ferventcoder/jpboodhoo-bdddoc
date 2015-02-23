@@ -1,7 +1,7 @@
-using System;
-
 namespace bdddoc.domain
 {
+    using System;
+
     public interface IConcernFactory
     {
         IConcern create_concern_from(Type type_with_concern, IObservationSpecification observation_specification);

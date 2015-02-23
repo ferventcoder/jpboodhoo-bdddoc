@@ -1,12 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
+    using core;
+    using spechelpers;
+
     [Concern(typeof (BDDReflectionExtensions))]
     public class when_determining_whether_a_type_is_a_concern : StaticContextSpecification
     {

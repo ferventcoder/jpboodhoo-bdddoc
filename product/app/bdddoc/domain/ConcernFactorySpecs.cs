@@ -1,9 +1,10 @@
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using core;
+    using spechelpers;
+
     [Concern(typeof (ConcernFactory))]
     public class when_a_concern_factory_is_told_to_create_a_concern_from_a_type : ContextSpecification<IConcernFactory>
     {
@@ -17,7 +18,6 @@ namespace bdddoc.domain
 
             sut = create_sut();
         }
-
 
 
         protected override void because()

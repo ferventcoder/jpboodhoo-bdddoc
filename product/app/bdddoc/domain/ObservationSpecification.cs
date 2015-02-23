@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-
 namespace bdddoc.domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Reflection;
+
     public interface IObservationSpecification
     {
         bool IsSatisfiedBy(MethodInfo method);

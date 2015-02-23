@@ -1,18 +1,13 @@
-using System;
-using System.IO;
-using System.Reflection;
-using bdddoc.domain;
-
 namespace bdddoc.tasks
 {
-    public interface IReportTasks
-    {
-        void run_report_using(string[] args);
-    }
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using domain;
 
     public class ReportTasks : IReportTasks
     {
-        private IReportOptionsFactory report_options_factory;
+        private readonly IReportOptionsFactory report_options_factory;
         private readonly TextWriter writer;
         private readonly IConcernReportFactory concern_report_factory;
         private readonly IReportWriter report_writer;

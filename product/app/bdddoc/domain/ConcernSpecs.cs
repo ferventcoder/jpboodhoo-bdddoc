@@ -1,10 +1,11 @@
-using System.Collections.Generic;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using System.Collections.Generic;
+    using core;
+    using spechelpers;
+
     public abstract class context_for_concern : ContextSpecification<IConcern>
     {
         protected string name_of_concern;
@@ -23,13 +24,11 @@ namespace bdddoc.domain
 
             sut = create_sut();
         }
-
     }
 
     [Concern(typeof (Concern))]
     public class when_a_concern_is_asked_for_its_name : context_for_concern
     {
-
         protected override void because()
         {
             name_of_concern = sut.name;

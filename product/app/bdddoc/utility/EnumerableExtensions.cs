@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
-
 namespace bdddoc.utility
 {
+    using System;
+    using System.Collections.Generic;
+
     public static class EnumerableExtensions
     {
         public static IEnumerable<T> one_at_a_time<T>(this IEnumerable<T> items)

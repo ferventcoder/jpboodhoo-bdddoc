@@ -1,12 +1,13 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using bdddoc.core;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.domain
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using core;
+    using spechelpers;
+
     public abstract class context_for_concern_report_factory : ContextSpecification<IConcernReportFactory>
     {
         protected IConcernReport report;
@@ -34,7 +35,6 @@ namespace bdddoc.domain
     [Concern(typeof (ConcernReportFactory))]
     public class when_the_concern_report_factory_is_told_to_create_a_concern_report : context_for_concern_report_factory
     {
-
         protected override void establish_context()
         {
             base.establish_context();

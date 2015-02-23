@@ -1,14 +1,15 @@
-using System;
-using System.IO;
-using System.Reflection;
-using System.Text;
-using bdddoc.core;
-using bdddoc.domain;
-using bdddoc.spechelpers;
 using Observation = MbUnit.Framework.TestAttribute;
 
 namespace bdddoc.tasks
 {
+    using System;
+    using System.IO;
+    using System.Reflection;
+    using System.Text;
+    using core;
+    using domain;
+    using spechelpers;
+
     public abstract class context_for_report_tasks : ContextSpecification<IReportTasks>
     {
         protected IReportOptions report_options;
@@ -119,11 +120,11 @@ namespace bdddoc.tasks
         private IReportOptions create_report_options()
         {
             return new ReportOptions
-                       {
-                           assembly_to_scan = Assembly.GetExecutingAssembly(),
-                           observation_specification = new ObservationSpecification("TestAttribute"),
-                           output_filename = report_output_path
-                       };
+                {
+                    assembly_to_scan = Assembly.GetExecutingAssembly(),
+                    observation_specification = new ObservationSpecification("TestAttribute"),
+                    output_filename = report_output_path
+                };
         }
 
         protected override void because()

@@ -1,9 +1,9 @@
-using System;
-using Rhino.Mocks;
-using Rhino.Mocks.Interfaces;
-
 namespace bdddoc.spechelpers
 {
+    using System;
+    using Rhino.Mocks;
+    using Rhino.Mocks.Interfaces;
+
     public static class RhinoMocksExtensions
     {
         public static void was_told_to<T>(this T mock, Action<T> item)

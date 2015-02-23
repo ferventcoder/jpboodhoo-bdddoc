@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using bdddoc.core;
-
 namespace bdddoc.domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Reflection;
+    using core;
+
     public static class BDDReflectionExtensions
     {
         public static IEnumerable<Type> all_types_with_a_concern_attribute(this Assembly assembly)
@@ -33,7 +33,7 @@ namespace bdddoc.domain
         public static IEnumerable<MethodInfo> all_methods_that_meet(this Type type, IObservationSpecification observation_specification)
         {
             return type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Public)
-                .Where(observation_specification.IsSatisfiedBy);
+                       .Where(observation_specification.IsSatisfiedBy);
         }
 
         public static IEnumerable<IConcernObservation> as_observations(this IEnumerable<MethodInfo> methods)

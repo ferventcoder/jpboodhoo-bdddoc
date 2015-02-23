@@ -1,10 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using MbUnit.Framework;
-
 namespace bdddoc.spechelpers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using MbUnit.Framework;
+
     public static class BDDAssertions
     {
         public static void should_be_equal_ignoring_case(this string item, string other)

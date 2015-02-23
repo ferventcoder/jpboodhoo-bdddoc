@@ -1,11 +1,6 @@
-using System.Reflection;
-
 namespace bdddoc.domain
 {
-    public interface IAssemblyRepository
-    {
-        Assembly find_using(string assembly_filename);
-    }
+    using System.Reflection;
 
     public class AssemblyRepository : IAssemblyRepository
     {

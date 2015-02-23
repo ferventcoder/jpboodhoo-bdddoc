@@ -1,8 +1,8 @@
-using MbUnit.Framework;
-using Rhino.Mocks;
-
 namespace bdddoc.spechelpers
 {
+    using MbUnit.Framework;
+    using Rhino.Mocks;
+
     public abstract class StaticContextSpecification
     {
         [SetUp]
@@ -20,6 +20,7 @@ namespace bdddoc.spechelpers
 
         protected abstract void because();
         protected abstract void establish_context();
+
         protected virtual void after_each_specification()
         {
         }
