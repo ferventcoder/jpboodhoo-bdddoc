@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="console\BootStrap.cs" />
+    <Compile Include="domain\BddReportType.cs" />
     <Compile Include="domain\IAssemblyRepository.cs" />
     <Compile Include="domain\IConcernReportFactory.cs" />
     <Compile Include="tasks\IReportTasks.cs" />
