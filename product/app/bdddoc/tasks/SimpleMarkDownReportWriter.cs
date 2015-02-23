@@ -31,13 +31,13 @@ namespace bdddoc.tasks
                 return string.Format("## {0}{1}", options.custom_header, Environment.NewLine);
             }
 
-            return string.Format("## Scenarios: {0} - Facts: {1}{2}", report.total_number_of_concerns, report.total_number_of_observations, Environment.NewLine);
+            return string.Format("## Scenarios: {0} - Observations: {1}{2}", report.total_number_of_concerns, report.total_number_of_observations, Environment.NewLine);
         }
 
         private string build_behaviour_block_using(IConcernGroup concern_group)
         {
             var builder = new StringBuilder();
-            builder.AppendFormat("{3}### {0} [ {1} Scenarios(s) , {2} Observations(s) ]{3}", concern_group.concerned_with.Name, concern_group.total_number_of_concerns,
+            builder.AppendFormat("{3}### {0} [ {1} Scenario(s) , {2} Observation(s) ]{3}", concern_group.concerned_with.Name, concern_group.total_number_of_concerns,
                                  concern_group.total_number_of_observations, Environment.NewLine);
             concern_group.concerns.OrderBy(x => x.name.name).each(cg => builder.Append(build_concern_block_using(cg)));
             return builder.ToString();
