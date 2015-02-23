@@ -1,7 +1,7 @@
 .svn
 .hg
 buildartifacts
-code_drop
+latestpackage
 [Bb]in
 obj
 src/packages
